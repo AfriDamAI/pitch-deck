@@ -2,150 +2,182 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AfriDam AI | Professional Pitch Deck</title>
+    <title>AfriDam AI | Official Pitch Deck</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --main-bg: #0a0f1e;
-            --accent-green: #2ecc71;
-            --text-white: #ffffff;
-            --text-dim: #94a3b8;
-            --danger: #ef4444;
+            --bg-color: #05070a;
+            --primary-green: #2ecc71;
+            --white: #ffffff;
+            --gray: #94a3b8;
         }
 
         .reveal {
             font-family: 'Inter', sans-serif !important;
-            background-color: var(--main-bg);
-            color: var(--text-white);
+            background-color: var(--bg-color);
+            color: var(--white);
         }
 
-        /* Heading Styles */
-        .reveal h1 { font-size: 3.5em !important; font-weight: 800 !important; text-transform: none !important; margin-bottom: 20px !important; letter-spacing: -2px; }
-        .reveal h2 { font-size: 2.2em !important; font-weight: 700 !important; text-transform: none !important; color: var(--accent-green) !important; margin-bottom: 40px !important; }
-        .reveal h3 { font-size: 1.5em !important; color: var(--text-white) !important; text-transform: none !important; }
-
-        /* Content Styles */
-        .reveal p { font-size: 1.1em !important; line-height: 1.6 !important; color: var(--text-dim) !important; }
-        .reveal ul { width: 80%; margin: 0 auto; list-style-type: none !important; }
-        .reveal li { font-size: 1.2em !important; margin-bottom: 25px !important; padding-left: 15px; border-left: 4px solid var(--accent-green); }
+        /* Make it look like a Slide Deck, not a website */
+        .reveal .slides { text-align: left !important; }
         
-        .highlight { color: var(--accent-green); font-weight: 700; }
-        .red-flag { color: var(--danger); font-weight: 700; }
+        .reveal h1 { font-size: 4.5em !important; font-weight: 900 !important; color: var(--white); text-transform: none !important; margin: 0; letter-spacing: -3px; }
+        .reveal h2 { font-size: 2.8em !important; font-weight: 800 !important; color: var(--primary-green); text-transform: none !important; margin-bottom: 50px !important; }
+        
+        .reveal p { font-size: 1.4em !important; color: var(--gray); line-height: 1.4; }
+        .reveal ul { margin-left: 20px; list-style: none; }
+        .reveal li { font-size: 1.5em !important; margin-bottom: 30px; padding-left: 20px; border-left: 6px solid var(--primary-green); font-weight: 500; }
 
-        /* Pricing Table Polish */
-        .pricing-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            width: 100%;
-            margin-top: 20px;
+        .highlight { color: var(--primary-green); font-weight: 700; }
+        .emergency { color: #ff4757; font-weight: 700; }
+
+        /* Pricing Table: Bolder and Larger */
+        .price-table { width: 100%; border-collapse: separate; border-spacing: 0 15px; margin-top: 20px; }
+        .price-table td { padding: 25px; font-size: 0.9em; background: #111; border-top: 1px solid #222; border-bottom: 1px solid #222; }
+        .price-table td:first-child { border-left: 5px solid var(--primary-green); border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-weight: 800; color: white; }
+        .price-table td:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; color: var(--primary-green); font-weight: 700; }
+
+        /* Custom Center-Nav Buttons */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 20px;
+            cursor: pointer;
+            z-index: 999;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 24px;
+            transition: all 0.3s;
         }
-        .pricing-table { width: 100%; border-collapse: collapse; }
-        .pricing-table th { color: var(--accent-green); font-size: 0.8em; padding-bottom: 20px; text-align: left; border-bottom: 1px solid #333; }
-        .pricing-table td { padding: 15px 0; border-bottom: 1px solid #222; font-size: 0.8em; text-align: left; }
+        .nav-btn:hover { background: var(--primary-green); color: black; }
+        #prev-btn { left: 30px; }
+        #next-btn { right: 30px; }
 
-        /* Grid for Solution Slide */
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
-        .grid-item { background: rgba(46, 204, 113, 0.1); padding: 30px; border-radius: 12px; border: 1px solid rgba(46, 204, 113, 0.2); }
-        .grid-item h4 { color: var(--accent-green); margin-bottom: 15px; font-size: 1em; }
-        .grid-item p { font-size: 0.7em !important; color: var(--text-white) !important; }
+        /* Team Grid */
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .team-member { font-size: 1.1em; line-height: 1.2; }
+        .team-member b { color: var(--primary-green); font-size: 1.2em; }
+        .team-member span { display: block; color: var(--gray); font-size: 0.8em; }
 
-        /* Progress Bar Fix */
-        .reveal .progress { color: var(--accent-green) !important; height: 6px !important; }
+        /* Progress Bar High Visibility */
+        .reveal .progress { height: 8px !important; background: rgba(255,255,255,0.1); }
+        .reveal .progress span { background: var(--primary-green) !important; }
     </style>
 </head>
 <body>
+
+    <button id="prev-btn" class="nav-btn" onclick="Reveal.prev()">&#10094;</button>
+    <button id="next-btn" class="nav-btn" onclick="Reveal.next()">&#10095;</button>
+
     <div class="reveal">
         <div class="slides">
 
-            <section data-transition="fade">
-                <h1>AfriDam <span style="color:var(--accent-green);">AI</span></h1>
-                <h3>Professional Skincare in Every Pocket</h3>
-                <p style="margin-top: 50px;">A Clinical Ecosystem for 1.2 Billion People</p>
-                <div style="font-size: 0.6em; margin-top: 40px; opacity: 0.5;">founder@afridamai.com</div>
+            <section data-background-color="#05070a">
+                <h1>AfriDam <span style="color:var(--primary-green)">AI</span></h1>
+                <p style="font-size: 2em !important; color: white;">The Gold Standard for Skin Health.</p>
+                <p style="margin-top: 50px;">Personalized clinical care for 1.2 Billion People.</p>
+                <div style="margin-top: 100px; color: var(--primary-green); font-weight: 800;">founder@afridamai.com</div>
             </section>
 
-            <section data-transition="slide">
+            <section>
                 <h2>The Gap in Care</h2>
                 <ul>
-                    <li><span class="highlight">Severe Scarcity:</span> 1.2 Billion people vs. < 500 skin specialists.</li>
-                    <li><span class="red-flag">Market Toxicity:</span> 70% of users self-medicate with harmful steroid/bleach creams.</li>
-                    <li><span class="highlight">Data Bias:</span> Existing diagnostic tools fail on melanin-rich skin tones.</li>
+                    <li><span class="highlight">Severe Scarcity:</span> 1.2B people vs. < 500 specialists.</li>
+                    <li><span class="emergency">Dangerous Self-Medication:</span> 70% of users use toxic bleaching creams.</li>
+                    <li><span class="highlight">Visual Bias:</span> Current AI tools fail on melanin-rich skin.</li>
                 </ul>
             </section>
 
             <section>
                 <h2>Our Ecosystem</h2>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h4>Instant Scans</h4>
-                        <p>Unlimited AI analysis for skin conditions and ingredients.</p>
+                <div style="display: flex; gap: 40px; margin-top: 40px;">
+                    <div style="flex: 1; background: #111; padding: 40px; border-radius: 15px;">
+                        <h3 class="highlight">01. Smart Scans</h3>
+                        <p style="font-size: 1em !important;">Free AI analysis of skin conditions and ingredients.</p>
                     </div>
-                    <div class="grid-item">
-                        <h4>Expert Triage</h4>
-                        <p>Direct connection to verified clinical specialists in minutes.</p>
+                    <div style="flex: 1; background: #111; padding: 40px; border-radius: 15px;">
+                        <h3 class="highlight">02. Expert Triage</h3>
+                        <p style="font-size: 1em !important;">Human specialists available in minutes, not weeks.</p>
                     </div>
-                    <div class="grid-item">
-                        <h4>Safe Store</h4>
-                        <p>Marketplace for vetted, professional products only.</p>
+                    <div style="flex: 1; background: #111; padding: 40px; border-radius: 15px;">
+                        <h3 class="highlight">03. Vetted Store</h3>
+                        <p style="font-size: 1em !important;">Clinical products delivered with OTP-verification.</p>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Safety by Design</h2>
-                <p>Built on the <span class="highlight">"Red Flag" Protocol</span> by Dr. Anand (CMO).</p>
-                <ul style="margin-top: 30px;">
-                    <li><span class="red-flag">Emergency Detection:</span> Automated triage for the top 10 dermatologic crises.</li>
-                    <li><span class="highlight">Interaction Guard:</span> AI blocks dangerous drug combinations at checkout.</li>
-                    <li><span class="highlight">The Ladder:</span> Seamless escalation from AI Nurse to Dermatologist.</li>
+                <p>Built on <span class="highlight">Dr. Anand's</span> Emergency Protocols.</p>
+                <ul style="margin-top: 40px;">
+                    <li><span class="emergency">Triage Logic:</span> Automated detection of 10 life-threatening crises.</li>
+                    <li><span class="highlight">Drug-Interaction Guard:</span> Blocking harmful product mixes.</li>
+                    <li><span class="highlight">The Escalation Ladder:</span> AI ➔ Nurse ➔ Doctor ➔ Dermatologist.</li>
                 </ul>
-                            </section>
+            </section>
 
             <section>
-                <h2>Flexible Pricing</h2>
-                <div class="pricing-box">
-                    <table class="pricing-table">
-                        <thead>
-                            <tr><th>Plan Tier</th><th>Price (Naira)</th><th>Primary Value</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>AI Open Access</td><td>FREE</td><td>Unlimited Scans & Analysis</td></tr>
-                            <tr><td>Instant Session</td><td>₦8,500</td><td>Single Clinical Consultation</td></tr>
-                            <tr><td>Starter Plan</td><td>₦3,000</td><td>Individual Tracking & Support</td></tr>
-                            <tr><td>Standard Plan</td><td>₦14,000</td><td>3 Consults/mo + Discounts</td></tr>
-                            <tr style="background: rgba(46, 204, 113, 0.1);"><td><b>Premium Gold</b></td><td><b>₦42,000</b></td><td><b>Family of 3 + Shared Progress</b></td></tr>
-                            <tr><td>Family VIP</td><td>₦140,000</td><td>Priority Specialist Access</td></tr>
-                        </tbody>
-                    </table>
+                <h2>Pricing Plans</h2>
+                <table class="price-table">
+                    <tr>
+                        <td>AI Open Access</td>
+                        <td>FREE Scans & Ingredient Checks</td>
+                        <td>₦0</td>
+                    </tr>
+                    <tr>
+                        <td>Starter Plan</td>
+                        <td>Individual Care & Tracking</td>
+                        <td>₦3,000</td>
+                    </tr>
+                    <tr>
+                        <td>Standard Plan</td>
+                        <td>3 Consults/mo + Discounts</td>
+                        <td>₦14,000</td>
+                    </tr>
+                    <tr style="background: rgba(46, 204, 113, 0.1);">
+                        <td>Premium Gold</td>
+                        <td>Family of 3 + Shared Tracking</td>
+                        <td>₦42,000</td>
+                    </tr>
+                    <tr>
+                        <td>Family VIP</td>
+                        <td>Priority Dermatologist Access</td>
+                        <td>₦140,000</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member"><b>Obey</b><span>Founder & Strategy</span></div>
+                    <div class="team-member"><b>Dr. Anand</b><span>Chief Medical Officer (CMO)</span></div>
+                    <div class="team-member"><b>Nathan Isong</b><span>Head of AI</span></div>
+                    <div class="team-member"><b>Tobi & Wisdom</b><span>Full-Stack & LMS Engineering</span></div>
+                    <div class="team-member"><b>Uzor</b><span>UI/UX Design</span></div>
+                    <div class="team-member"><b>Panashe</b><span>Marketplace & Logistics</span></div>
                 </div>
             </section>
 
             <section>
-                <h2>The Business Model</h2>
-                <ul>
-                    <li><span class="highlight">20% Transaction Fee:</span> Earned from every vendor sale.</li>
-                    <li><span class="highlight">10% Platform Net:</span> Stable margin after all incentives and discounts.</li>
-                    <li><span class="highlight">Logistics:</span> Integrated OTP-verified delivery via Terminal Africa.</li>
+                <h2>The Ask</h2>
+                <p>We are scaling for the continent.</p>
+                <ul style="margin-top: 50px;">
+                    <li><span class="highlight">Engineering:</span> Refining accuracy for 10+ skin emergencies.</li>
+                    <li><span class="highlight">Infrastructure:</span> Scaling database for millions of households.</li>
+                    <li><span class="highlight">Network:</span> Building the Pan-African pharmacy grid.</li>
                 </ul>
-                            </section>
-
-            <section>
-                <h2>The Team</h2>
-                <div style="text-align: left; margin-top: 50px;">
-                    <p><span class="highlight">Obey</span> | Founder - Strategy & Operations</p>
-                    <p><span class="highlight">Dr. Anand</span> | CMO - Clinical Governance</p>
-                    <p><span class="highlight">Technical Team</span> | Tobi, Wisdom, Uzor, Panashe</p>
-                </div>
-                <div style="margin-top: 60px; font-size: 0.8em; color: var(--accent-green);">founder@afridamai.com</div>
+                <p style="margin-top: 80px; text-align: center; color: var(--primary-green); font-weight: 900;">founder@afridamai.com</p>
             </section>
 
         </div>
@@ -156,11 +188,11 @@
         Reveal.initialize({
             hash: true,
             center: true,
-            width: 1200,
-            height: 800,
-            margin: 0.1,
-            transition: 'convex',
-            controls: true,
+            width: 1400,
+            height: 900,
+            margin: 0.05,
+            transition: 'fade',
+            controls: false, // Hidden native controls
             progress: true
         });
     </script>
